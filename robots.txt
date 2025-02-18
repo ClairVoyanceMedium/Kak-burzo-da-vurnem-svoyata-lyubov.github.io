@@ -1,42 +1,88 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
 User-agent: *
 Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Disallow: /login/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /search/
+Disallow: /*?*
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
+# Autoriser uniquement le crawl des pages essentielles
+Allow: /$
+Allow: /rituels/
+Allow: /contact/
+Allow: /voyance/
 
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# Optimisation pour Googlebot
 User-agent: Googlebot
+Allow: /images/
+Allow: /videos/
+Allow: /news/
+Allow: /rituels/
+Allow: /contact/
+Allow: /voyance/
+Crawl-delay: 1
+
+# Optimisation pour Google Mobile Index
+User-agent: Googlebot-Mobile
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Crawl-delay: 1
+
+# Optimisation pour Bing
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
+# Optimisation pour Baidu (Chine)
+User-agent: Baiduspider
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# Optimisation pour Yandex (Russie)
+User-agent: Yandex
+Disallow: /
+
+# Sitemap
+Sitemap: https://clairvoyancemedium.github.io/Kak-burzo-da-vurnem-svoyata-lyubov.github.io/sitemap.xml
+
+# Politique d'indexation avancée
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /cgi-bin/
+Disallow: /api/
+Disallow: /scripts/
+
+# Directives spécifiques pour les moteurs de recherche AI
+User-agent: ChatGPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: OpenAI-GPT
+Allow: /
+Crawl-delay: 2
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeAI
+Disallow: /
+
+# Amélioration de la couverture des images et vidéos
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Googlebot-Video
+Allow: /videos/
+
+User-agent: Googlebot-News
+Allow: /news/
+
+# Politique pour les robots d’indexation de publicités
+User-agent: AdsBot-Google
+Allow: /
+Crawl-delay: 1
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Crawl-delay: 1
